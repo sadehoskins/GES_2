@@ -15,5 +15,3 @@ public:
 	AGES_2GameMode();
 };
 
-
-
