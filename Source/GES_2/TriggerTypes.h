@@ -10,11 +10,10 @@ struct FTriggerActivationData
 
     UPROPERTY(BlueprintReadWrite) FGameplayTag TriggerTag;
     UPROPERTY(BlueprintReadWrite) FGameplayTagContainer ContextTags;
-    UPROPERTY(BlueprintReadWrite) TObjectPtr<AActor> Instigator = nullptr;
+    UPROPERTY(BlueprintReadWrite) TObjectPtr<AActor> InstigatorActor = nullptr;
     UPROPERTY(BlueprintReadWrite) TObjectPtr<AActor> TriggerOwner = nullptr;
     UPROPERTY(BlueprintReadWrite) float Timestamp = 0.f;
-
-    UPROPERTY(BlueprintReadWrite) FName LevelName = NAME_None;
+    UPROPERTY(BlueprintReadWrite) FName LevelName = NAME_None; // replaces cut FInstancedStruct
 };
 
 USTRUCT(BlueprintType)
