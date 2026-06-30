@@ -28,6 +28,10 @@ void ULevelStreamingManager::Deinitialize()
 
 void ULevelStreamingManager::OnTriggerReceived(const FTriggerActivationData& Data)
 {
+    // DEBUG
+    UE_LOG(LogTemp, Warning, TEXT("LSM received tag: %s, LevelName: %s"),
+        *Data.TriggerTag.ToString(), *Data.LevelName.ToString());
+
     if (Data.TriggerTag.MatchesTagExact(TriggerTags::TAG_Trigger_Level_Load))
         HandleLevelLoad(Data);
     else if (Data.TriggerTag.MatchesTagExact(TriggerTags::TAG_Trigger_Level_Unload))
@@ -37,6 +41,11 @@ void ULevelStreamingManager::OnTriggerReceived(const FTriggerActivationData& Dat
 void ULevelStreamingManager::HandleLevelLoad(const FTriggerActivationData& Data)
 {
     FLatentActionInfo Info;
+
+    // DEBUG
+    UE_LOG(LogTemp, Warning, TEXT("LSM HandleLevelLoad calling LoadStreamLevel for: %s"),
+        *Data.LevelName.ToString());
+
     UGameplayStatics::LoadStreamLevel(this, Data.LevelName, true, true, Info);
 }
 
